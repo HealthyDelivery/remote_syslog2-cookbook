@@ -1,12 +1,12 @@
 # Overwrite this in your cookbook
 default['remote_syslog2']['config'] = {
-  files: [],
+  files: [node['deploy']['platejoy']['environment_variables']['PRODUCTION_LOG_PATH']],
   exclude_files: [],
   exclude_patterns: [],
   hostname: node['hostname'],
   destination: {
-    host: 'logs.papertrailapp.com',
-    port: 12345
+    host: node['deploy']['platejoy']['environment_variables']['PAPERTRAIL_HOST'],
+    port: node['deploy']['platejoy']['environment_variables']['PAPERTRAIL_PORT']
   }
 }
 
